@@ -34,9 +34,7 @@
         form.addEventListener('submit', function(e) {
             e.preventDefault();
             if (input.value) {
-                let map = new Map([['name', name], ['message', input.value]]);
-                console.log(map);
-                socket.emit('chat message', map);
+                socket.emit('chat message', input.value);
                 input.value = '';
             }
         });
