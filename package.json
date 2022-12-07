@@ -1,0 +1,23 @@
+{
+  "name": "mammothchat",
+  "version": "1.0.0",
+  "description": "MIT Chat app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/christian-morgan92/MammothChat.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/christian-morgan92/MammothChat/issues"
+  },
+  "homepage": "https://github.com/christian-morgan92/MammothChat#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "socket.io": "^4.5.4"
+  }
+}
