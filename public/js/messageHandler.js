@@ -1,5 +1,6 @@
 let count = 0
 let message_log = null
+let resObj=null
 let socket = io(),
     messages = document.getElementById('messages'),
     form = document.getElementById('form'),
@@ -11,21 +12,26 @@ socket.emit('chat message', name + " has joined the chat");
 form.addEventListener('submit', async function (e) {
     e.preventDefault();
     if (input.value) {
-
+        
         if (count == 0) {
             console.log("Before");
             let response = await createTicket(input.value)
             console.log("After");
             console.log("res:", response);
-            const resObj = await response.json();
+            resObj = await response.json();
             console.log("resObj:", resObj);
             console.log("ID:::::::::::::::::::::::::::", resObj.id);
             
-            // var intervalId = 
-            window.setInterval(async ()=>{await getTicketInfo(resObj.id)},30000)
+            
+            var intervalId = window.setInterval(async ()=>{
+                await getTicketInfo(resObj.id)
+            },5000)
             //clearInterval(intervalId)// to stop loop
             console.log("After intervals");
-                        
+
+        }else{
+            console.log("resObj id",resObj.id,"val",input.value);
+            let res = await updateTicket(resObj.id, input.value)
         }
         socket.emit('chat message', input.value);
         input.value = '';
@@ -57,6 +63,21 @@ async function createTicket(msg) {
     return response
 }
 
+async function updateTicket(ticketID,msg) {
+    console.log("Triggered");
+    let res = {
+        id: ticketID,
+        message:msg
+    }
+
+    const response = await fetch('/updateTicket', {
+        method: 'post',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(res)
+    })
+
+}
+
 async function getTicketInfo(ticketID) {
     console.log("GET");
     let res = {
@@ -69,3 +90,4 @@ async function getTicketInfo(ticketID) {
         body: JSON.stringify(res)
     })
 }
+
