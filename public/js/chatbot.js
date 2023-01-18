@@ -36,3 +36,54 @@ ADMIN: !resolve
 BOT: Thank you for contacting support, your ticked has been marked as resolved.
 *Ticket Closed*
 */
+
+// created a script execution keyword execute chatbot.js directly (npm run faq)
+// I am using this block to test the FAQ function
+import { outputFAQ } from './outputFAQ.js';
+
+console.log(``);
+console.log(`>>>>> Louis debugging -------------- FAQ --------------`);
+console.log(``);
+
+const FAQ = [
+    `Q: can't log into service now?
+        A: Grow a pair`,
+    `Q: Why do I need a password?
+        A: I mean if you're that dumb...`,
+    `Q: To login to the services the first time.
+        A: The password will be your credit card number, remember to change it`,
+    `Q: Need help?
+        A: how much are you willing to pay?`,
+    `Q: Security won't let me park inside.
+        A: because I told them to stop idiots like you from taking my parking spot`,
+    `Q: why do i need to install a virtual machine
+        A: because cross platform support is a bit janky without a vm`
+];
+
+const FAQoutput = [
+    'I am struggling to login to the website',
+    "The webpage doesn't allow me to login",
+    'How do I reset my password?',
+    'What is the first password that I need to use?',
+    'Where can I find the help desk?',
+    'Can I park inside the campus',
+    'How do I install a vm onto my computer'
+];
+
+FAQoutput.forEach((question, i) => {  
+    console.log(`- case #`, i +1, '-');
+    console.log(``);
+    console.log(`User: ${question}`);
+    console.log(`---`);
+    console.log(``);
+    console.log(`FAQ: 
+        ${outputFAQ(question, FAQ)}`);
+    console.log(`-- end case --`);
+    console.log(``);
+})
+
+console.log(``);
+console.log(`========================= END =========================`);
+console.log(``);
+
+// todo write a function to handle all !commands (abstraction)
