@@ -10,7 +10,7 @@
     "faq": "node ./public/js/chatbot.js"
   },
   "repository": {
-    "type": "git", 
+    "type": "git",
     "url": "git+https://github.com/christian-morgan92/MammothChat.git"
   },
   "author": "",
@@ -23,6 +23,9 @@
     "axios": "^1.2.1",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "fs": "^0.0.1-security",
+    "js-sha256": "^0.9.0",
+    "path": "^0.12.7",
     "socket.io": "^4.5.4"
   }
 }

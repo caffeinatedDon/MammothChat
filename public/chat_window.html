@@ -6,15 +6,33 @@
   <link rel="stylesheet" href="./styles/main.css">
 </head>
 
-<body class="chatWindow">
-  <ul id="messages"></ul>
-  <form id="form" action="">
-    <input id="input" autocomplete="off" /><button>Send</button>
-  </form>
+<body>
+  <div id="socket-error" class="socket-error"> 
+    <div id="error-description" class="error-div">
+      An error occured: 
+    </div>
+    <div class="error-div">
+      <button id="error-return" class="error-return send-message">Menu</button>
+    </div>
+  </div>
+  
+  <div id="queueDiv" class="queueDiv">
+    <div style="margin-bottom: 10%;">
+      Position in queue: 
+      <h3 id="queue-position" class="queue-position"></h4>
+    </div>
+  </div>
 
-  <script src="/socket.io/socket.io.js"></script>
-  <script type="module" src="./js/messageHandler.js"></script>
-
+  <div style="height: 100%; width: 100%;">
+    <ul id="messages" class="messages"></ul>
+    <form id="form" class="form">
+      <input id="input" class="input" autocomplete="off" maxlength="1000"/>
+      <div>
+        <div id="characterLength" class="characterLength">0/1000</div>
+        <button id="send-message" class="send-message">Send</button>
+      </div>
+    </form>
+  </div>
 </body>
-
+  <script type="module" src="./js/client4.js"></script>
 </html>
